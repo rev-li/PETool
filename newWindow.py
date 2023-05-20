@@ -3,10 +3,13 @@ import traceback
 from PyQt5.QtCore import QMimeData
 
 from DOSWindow import Ui_DosWindow
+from DataWindow import Ui_DataDirectoryWindow
 from FileWindow import Ui_FileWindow
 from MainWinDow import Ui_MainWindow
 import sys
 from PyQt5.QtWidgets import *
+
+from OptionalWindow import Ui_OptionalWindow
 
 
 class Main(QMainWindow, Ui_MainWindow):
@@ -49,7 +52,7 @@ class DosWin(QMainWindow, Ui_DosWindow):
             self.content = self.tableWidget.item(row, col).text()
         except Exception as e:
             traceback.print_exc()
-        self.textBrowser.setText(" ")
+        self.textBrowser.setText("        *_*      ")
 
     # def show_data(self, Item):
     #     try:
@@ -107,12 +110,82 @@ class FileWin(QMainWindow, Ui_FileWindow):
         self.content = None
 
 
+class OptWin(QMainWindow, Ui_OptionalWindow):
+    def __init__(self):
+        super(OptWin, self).__init__()
+        self.content = None
+        self.setupUi(self)
+        self.tableWidget.clicked.connect(self.fillUserInfo)
+        self.CopyButton.clicked.connect(self.copyText)
+        self.CopyButton.clicked.connect(self.ToldSuccessfully)
+
+    def copyText(self):
+        clipboard = QApplication.clipboard()
+        # 把选择的内容复制到剪贴板
+        if self.content is not None:
+            clipboard.setText(self.content)
+
+    # 获取tableWidget表格内容
+    def fillUserInfo(self, Item):
+        try:
+            row = Item.row()  # 获取行数
+            col = Item.column()  # 获取列数 注意是column而不是col哦
+            self.content = self.tableWidget.item(row, col).text()
+        except Exception as e:
+            traceback.print_exc()
+        self.textBrowser.setText("        *_*      ")
+
+    def ToldSuccessfully(self):
+        if self.content is not None:
+            self.textBrowser.setText("复制成功！")
+        else:
+            self.textBrowser.setText("请选择左边框中要复制的内容！！！")
+        self.content = None
+
+
+class DataWin(QMainWindow, Ui_DataDirectoryWindow):
+    def __init__(self):
+        super(DataWin, self).__init__()
+        self.content = None
+        self.setupUi(self)
+        self.tableWidget.clicked.connect(self.fillUserInfo)
+        self.CopyButton.clicked.connect(self.copyText)
+        self.CopyButton.clicked.connect(self.ToldSuccessfully)
+
+    def copyText(self):
+        clipboard = QApplication.clipboard()
+        # 把选择的内容复制到剪贴板
+        if self.content is not None:
+            clipboard.setText(self.content)
+
+    # 获取tableWidget表格内容
+    def fillUserInfo(self, Item):
+        try:
+            row = Item.row()  # 获取行数
+            col = Item.column()  # 获取列数 注意是column而不是col哦
+            self.content = self.tableWidget.item(row, col).text()
+        except Exception as e:
+            traceback.print_exc()
+        self.textBrowser.setText(" ")
+
+    def ToldSuccessfully(self):
+        if self.content is not None:
+            self.textBrowser.setText("复制成功！")
+        else:
+            self.textBrowser.setText("请选择左边框中要复制的内容！！！")
+        self.content = None
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     main = Main()
     doswin = DosWin()
     filewin = FileWin()
+    optwin = OptWin()
+    datawin = DataWin()
     main.show()
     main.actionIMAGE_DOS_HEADER.triggered.connect(doswin.show)
     main.actionIMAGE_FILE_HEADER.triggered.connect(filewin.show)
+    main.actionIMAGE_OPTINAL_HEADER.triggered.connect(optwin.show)
+    main.actionIMAGE_DATA_HEADER.triggered.connect(datawin.show)
     sys.exit(app.exec_())

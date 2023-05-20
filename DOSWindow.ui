@@ -200,7 +200,7 @@
     </column>
     <item row="0" column="0">
      <property name="text">
-      <string>123</string>
+      <string>IDH.e_magic</string>
      </property>
      <property name="flags">
       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
@@ -208,7 +208,7 @@
     </item>
     <item row="0" column="1">
      <property name="text">
-      <string>234</string>
+      <string>2个字节</string>
      </property>
      <property name="font">
       <font>
@@ -221,162 +221,162 @@
     </item>
     <item row="1" column="0">
      <property name="text">
-      <string>213</string>
+      <string>IDH.e_cblp</string>
      </property>
     </item>
     <item row="1" column="1">
      <property name="text">
-      <string>123</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="2" column="0">
      <property name="text">
-      <string>123</string>
+      <string>IDH.e_cp</string>
      </property>
     </item>
     <item row="2" column="1">
      <property name="text">
-      <string>123</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="3" column="0">
      <property name="text">
-      <string>123</string>
+      <string>IDH.e_crlc</string>
      </property>
     </item>
     <item row="3" column="1">
      <property name="text">
-      <string>123</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="4" column="0">
      <property name="text">
-      <string>123</string>
+      <string>IDH.e_cparhdr</string>
      </property>
     </item>
     <item row="4" column="1">
      <property name="text">
-      <string>123</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="5" column="0">
      <property name="text">
-      <string>123</string>
+      <string>IDH.e_minalloc</string>
      </property>
     </item>
     <item row="5" column="1">
      <property name="text">
-      <string>123</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="6" column="0">
      <property name="text">
-      <string>123</string>
+      <string>IDH.e_ss</string>
      </property>
     </item>
     <item row="6" column="1">
      <property name="text">
-      <string>123</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="7" column="0">
      <property name="text">
-      <string>3</string>
+      <string>IDH.e_sp</string>
      </property>
     </item>
     <item row="7" column="1">
      <property name="text">
-      <string>3</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="8" column="0">
      <property name="text">
-      <string>3</string>
+      <string>IDH.e_csum</string>
      </property>
     </item>
     <item row="8" column="1">
      <property name="text">
-      <string>3</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="9" column="0">
      <property name="text">
-      <string>213</string>
+      <string>IDH.e_ip</string>
      </property>
     </item>
     <item row="9" column="1">
      <property name="text">
-      <string>123</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="10" column="0">
      <property name="text">
-      <string>123</string>
+      <string>IDH.e_cs</string>
      </property>
     </item>
     <item row="10" column="1">
      <property name="text">
-      <string>213</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="11" column="0">
      <property name="text">
-      <string>123</string>
+      <string>IDH.e_lfarlc</string>
      </property>
     </item>
     <item row="11" column="1">
      <property name="text">
-      <string>123</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="12" column="0">
      <property name="text">
-      <string>12</string>
+      <string>IDH.e_res</string>
      </property>
     </item>
     <item row="12" column="1">
      <property name="text">
-      <string>1</string>
+      <string>8个字节</string>
      </property>
     </item>
     <item row="13" column="0">
      <property name="text">
-      <string>1</string>
+      <string>IDH.e_oemid</string>
      </property>
     </item>
     <item row="13" column="1">
      <property name="text">
-      <string>2</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="14" column="0">
      <property name="text">
-      <string>2</string>
+      <string>IDH.e_oeminfo</string>
      </property>
     </item>
     <item row="14" column="1">
      <property name="text">
-      <string>2</string>
+      <string>2个字节</string>
      </property>
     </item>
     <item row="15" column="0">
      <property name="text">
-      <string>3</string>
+      <string>IDH.e_res2</string>
      </property>
     </item>
     <item row="15" column="1">
      <property name="text">
-      <string>3</string>
+      <string>20个字节</string>
      </property>
     </item>
     <item row="16" column="0">
      <property name="text">
-      <string>1</string>
+      <string>IDH.e_lfanew</string>
      </property>
     </item>
     <item row="16" column="1">
      <property name="text">
-      <string>q</string>
+      <string>2个字节</string>
      </property>
     </item>
    </widget>

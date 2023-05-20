@@ -114,7 +114,7 @@ p, li { white-space: pre-wrap; }
    <addaction name="separator"/>
    <addaction name="actionIMAGE_FILE_HEADER"/>
    <addaction name="separator"/>
-   <addaction name="actionIMAGE_OPTINAL_HEADER"/>
+   <addaction name="actionIMAGE_OPTIONAL_HEADER"/>
    <addaction name="separator"/>
    <addaction name="actionIMAGE_DATA_HEADER"/>
    <addaction name="separator"/>
@@ -151,9 +151,9 @@ p, li { white-space: pre-wrap; }
     <string>FILE_HEADER</string>
    </property>
   </action>
-  <action name="actionIMAGE_OPTINAL_HEADER">
+  <action name="actionIMAGE_OPTIONAL_HEADER">
    <property name="text">
-    <string>OPTINAL_HEADER</string>
+    <string>OPTIONAL_HEADER</string>
    </property>
   </action>
   <action name="actionIMAGE_DATA_HEADER">
