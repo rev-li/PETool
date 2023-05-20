@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FileWindow</class>
+ <widget class="QMainWindow" name="FileWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>290</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>290</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>290</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>600</width>
+      <height>290</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>600</width>
+      <height>290</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>600</width>
+      <height>280</height>
+     </size>
+    </property>
+    <row>
+     <property name="text">
+      <string>Machine</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>NumberOfSections</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>TimeDataStamp</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>PointOfSymbolTable</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>NumberOfSymbols</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfOptionHeader</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>Characteristics</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Content</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Size</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="CopyButton">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>70</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Copy</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>130</y>
+      <width>151</width>
+      <height>141</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

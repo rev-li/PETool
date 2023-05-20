@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>750</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>750</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>750</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>750</width>
+      <height>480</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>750</width>
+      <height>480</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>750</width>
+      <height>480</height>
+     </size>
+    </property>
+    <row>
+     <property name="text">
+      <string>Magic</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MajorLinkerVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MinorLinkerVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfCode</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfInitializeData</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfUninitializeData</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>AddressOfEntryPoint（RVA）</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>BaseOfCode</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>BaseOfData</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>ImageBase</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SectionAlignment</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>FileAlignment</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MajorOperatingSystemVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MinorOperatingSystemVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MajorImageVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MinorImageVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MajorSubsystemVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MinorSubsystemVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>Win32VersionValue</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfImage</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfHeaders</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>CheckSum</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>Subsystem</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>DllCharacteristics</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfStackReserve</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfStackCommit</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfHeapReserve</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfHeapCommit</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>LoaderFlags</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>NumberOfRvaAndSizes</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>DataDirectory</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Content</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Size</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>170</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Copy</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>230</y>
+      <width>171</width>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
