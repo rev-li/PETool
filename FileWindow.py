@@ -57,7 +57,7 @@ class Ui_FileWindow(object):
 
     def retranslateUi(self, FileWindow):
         _translate = QtCore.QCoreApplication.translate
-        FileWindow.setWindowTitle(_translate("FileWindow", "MainWindow"))
+        FileWindow.setWindowTitle(_translate("FileWindow", "IMAGE_FILE_HEADER"))
         item = self.tableWidget.verticalHeaderItem(0)
         item.setText(_translate("FileWindow", "Machine"))
         item = self.tableWidget.verticalHeaderItem(1)

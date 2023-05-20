@@ -46,11 +46,10 @@ class DosWin(QMainWindow, Ui_DosWindow):
         try:
             row = Item.row()  # 获取行数
             col = Item.column()  # 获取列数 注意是column而不是col哦
-            text = self.tableWidget.item(row, col).text()
+            self.content = self.tableWidget.item(row, col).text()
         except Exception as e:
             traceback.print_exc()
         self.textBrowser.setText(" ")
-        self.content = text
 
     # def show_data(self, Item):
     #     try:
@@ -77,7 +76,7 @@ class DosWin(QMainWindow, Ui_DosWindow):
 
 class FileWin(QMainWindow, Ui_FileWindow):
     def __init__(self):
-        super(Ui_FileWindow, self).__init__()
+        super(FileWin, self).__init__()
         self.content = None
         self.setupUi(self)
         self.tableWidget.clicked.connect(self.fillUserInfo)
@@ -95,11 +94,10 @@ class FileWin(QMainWindow, Ui_FileWindow):
         try:
             row = Item.row()  # 获取行数
             col = Item.column()  # 获取列数 注意是column而不是col哦
-            text = self.tableWidget.item(row, col).text()
+            self.content = self.tableWidget.item(row, col).text()
         except Exception as e:
             traceback.print_exc()
         self.textBrowser.setText(" ")
-        self.content = text
 
     def ToldSuccessfully(self):
         if self.content is not None:
@@ -113,6 +111,8 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     main = Main()
     doswin = DosWin()
+    filewin = FileWin()
     main.show()
     main.actionIMAGE_DOS_HEADER.triggered.connect(doswin.show)
+    main.actionIMAGE_FILE_HEADER.triggered.connect(filewin.show)
     sys.exit(app.exec_())

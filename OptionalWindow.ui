@@ -213,7 +213,7 @@
      </property>
     </column>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="CopyButton">
     <property name="geometry">
      <rect>
       <x>570</x>
