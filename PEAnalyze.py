@@ -186,7 +186,7 @@ class Image_Dos_Header:
 
 class IMAGE_FILE_HEADER:
     def __init__(self, e_lfanew, content):
-        self.Signature = LitToBig(content[e_lfanew: e_lfanew + 4])
+        # self.Signature = LitToBig(content[e_lfanew: e_lfanew + 4])
         self.Machine = LitToBig(content[e_lfanew + 4: e_lfanew + 6])
         self.NumberOfSections = LitToBig(content[e_lfanew + 6: e_lfanew + 8])
         self.TimeDateStamp = LitToBig(content[e_lfanew + 8: e_lfanew + 12])
@@ -196,55 +196,83 @@ class IMAGE_FILE_HEADER:
         self.Characteristics = LitToBig(content[e_lfanew + 22: e_lfanew + 24])
 
 
-def Read_Image_Optional_Header(IOHbase, content):
-    magic = content[IOHbase:IOHbase + 2]
-    # print("magic:", magic)
-    if magic == b'\x0b\x01':
-        print("---------------------IMAGE_OPTIONAL_HEADER32----------------------")
-    elif magic == b'\x0b\x02':
-        print("---------------------IMAGE_OPTIONAL_HEADER64----------------------")
-    # AddressOfEntryPoint
-    AddrOfEntryPoint = content[IOHbase + 16: IOHbase + 20]
-    print("程序入口点地址(EP) :   ", ByteToHex(AddrOfEntryPoint).upper())
-    # Image_Base
-    Image_Base = content[IOHbase + 28: IOHbase + 32]
-    print("Image_Base :        ", ByteToHex(Image_Base))
-    # SectionalAlignment
-    SectionalAlignment = content[IOHbase + 32: IOHbase + 36]
-    print("SectionalAlignment :", ByteToHex(SectionalAlignment))
-    # FileAlignment
-    FileAlignment = content[IOHbase + 36: IOHbase + 40]
-    print("FileAlignment :     ", ByteToHex(FileAlignment))
-    # SizeOfImage
-    SizeOfImage = content[IOHbase + 56: IOHbase + 60]
-    print("SizeOfImage :       ", ByteToHex(SizeOfImage).upper())
-    # SizeOfHeader
-    SizeOfHeader = content[IOHbase + 60: IOHbase + 64]
-    print("SizeOfHeader :      ", ByteToHex(SizeOfHeader))
+class Image_Optional_Header:
+    def __init__(self, e_lfanew, content):
+        self.magic = LitToBig(content[e_lfanew + 24:e_lfanew + 26])
+        self.MajorLinkerVersion = LitToBig(content[e_lfanew + 26: e_lfanew + 27])
+        self.MinorLinkerVersion = LitToBig(content[e_lfanew + 27:e_lfanew + 28])
+        self.SizeOfCode = LitToBig(content[e_lfanew + 28:e_lfanew + 32])
+        self.SizeOfInitializedData = LitToBig(content[e_lfanew + 32: e_lfanew + 36])
+        self.AddressOfEntryPoint = LitToBig(content[e_lfanew + 36:e_lfanew + 40])
+        self.BaseOfCode = LitToBig(content[e_lfanew + 40: e_lfanew + 44])
+        self.SectionAlignment = LitToBig(content[e_lfanew + 44:e_lfanew + 48])
+        self.FileAlignment = LitToBig(content[e_lfanew + 48:e_lfanew + 52])
+        self.MajorOperatingSystemVersion = LitToBig(content[e_lfanew + 52: e_lfanew + 54])
+        self.MinorOperatingSystemVersion = LitToBig(content[e_lfanew + 54:e_lfanew + 56])
+        self.MajorImageVersion = LitToBig(content[e_lfanew + 56:e_lfanew + 58])
+        self.MinorImageVersion = LitToBig(content[e_lfanew + 58:e_lfanew + 60])
+        self.Win32VersionValue = LitToBig(content[e_lfanew + 60:e_lfanew + 64])
+        self.SizeOfImage = LitToBig(content[e_lfanew + 64:e_lfanew + 68])
+        self.SizeOfHeaders = LitToBig(content[e_lfanew + 68:e_lfanew + 72])
+        self.CheckSum = LitToBig(content[e_lfanew + 72:e_lfanew + 76])
+        self.Subsystem = LitToBig(content[e_lfanew + 76:e_lfanew + 78])
+        self.DllCharacteristics = LitToBig(content[e_lfanew + 78:e_lfanew + 80])
+        self.SizeOfStackReserve = LitToBig(content[e_lfanew + 80:e_lfanew + 84])
+        self.SizeOfHeapReserve = LitToBig(content[e_lfanew + 84:e_lfanew + 88])
+        self.SizeOfHeapCommit = LitToBig(content[e_lfanew + 88:e_lfanew + 92])
+        self.LoaderFlags = LitToBig(content[e_lfanew + 92:e_lfanew + 96])
+        self.NumberOfRvaAndSizes = LitToBig(content[e_lfanew + 96:e_lfanew + 100])
 
-    # Subsystem
-    print("Subsystem :         ", end=" ")
-    Subsystem = content[IOHbase + 68: IOHbase + 70]
-    Subsystem = int.from_bytes(Subsystem, "little")
-    if Subsystem == 1:
-        print("系统驱动文件")
-    elif Subsystem == 2:
-        print("窗口应用程序")
-    elif Subsystem == 3:
-        print("控制台应用程序")
 
-    # NumberOfRvaAndSizes
-    NumberOfRvaAndSizes = content[IOHbase + 92: IOHbase + 96]
-    print("NumberOfRvaAndSizes:", ByteToHex(NumberOfRvaAndSizes).upper())
+# def Read_Image_Optional_Header(IOHbase, content):
+#     magic = content[IOHbase:IOHbase + 2]
+#     # print("magic:", magic)
+#     if magic == b'\x0b\x01':
+#         print("---------------------IMAGE_OPTIONAL_HEADER32----------------------")
+#     elif magic == b'\x0b\x02':
+#         print("---------------------IMAGE_OPTIONAL_HEADER64----------------------")
+#     # AddressOfEntryPoint
+#     AddrOfEntryPoint = content[IOHbase + 16: IOHbase + 20]
+#     print("程序入口点地址(EP) :   ", ByteToHex(AddrOfEntryPoint).upper())
+#     # Image_Base
+#     Image_Base = content[IOHbase + 28: IOHbase + 32]
+#     print("Image_Base :        ", ByteToHex(Image_Base))
+#     # SectionalAlignment
+#     SectionalAlignment = content[IOHbase + 32: IOHbase + 36]
+#     print("SectionalAlignment :", ByteToHex(SectionalAlignment))
+#     # FileAlignment
+#     FileAlignment = content[IOHbase + 36: IOHbase + 40]
+#     print("FileAlignment :     ", ByteToHex(FileAlignment))
+#     # SizeOfImage
+#     SizeOfImage = content[IOHbase + 56: IOHbase + 60]
+#     print("SizeOfImage :       ", ByteToHex(SizeOfImage).upper())
+#     # SizeOfHeader
+#     SizeOfHeader = content[IOHbase + 60: IOHbase + 64]
+#     print("SizeOfHeader :      ", ByteToHex(SizeOfHeader))
+#
+#     # Subsystem
+#     print("Subsystem :         ", end=" ")
+#     Subsystem = content[IOHbase + 68: IOHbase + 70]
+#     Subsystem = int.from_bytes(Subsystem, "little")
+#     if Subsystem == 1:
+#         print("系统驱动文件")
+#     elif Subsystem == 2:
+#         print("窗口应用程序")
+#     elif Subsystem == 3:
+#         print("控制台应用程序")
+#
+#     # NumberOfRvaAndSizes
+#     NumberOfRvaAndSizes = content[IOHbase + 92: IOHbase + 96]
+#     print("NumberOfRvaAndSizes:", ByteToHex(NumberOfRvaAndSizes).upper())
 
-    # DataDirectory
-    # TODO
-    # DataDirectory = content[IOHbase + 96 : IOHbase + 160]
-    # print("DataDirectory :", hex(int.from_bytes(DataDirectory, "little")))
-    # VirtualAddress = DataDirectory[:4]
-    # Size = DataDirectory[4:8]
-    # print("VirtualAddress :", hex(int.from_bytes(VirtualAddress, "little")))
-    # print("Size :", hex(int.from_bytes(Size, "little")))
+# DataDirectory
+# TODO
+# DataDirectory = content[IOHbase + 96 : IOHbase + 160]
+# print("DataDirectory :", hex(int.from_bytes(DataDirectory, "little")))
+# VirtualAddress = DataDirectory[:4]
+# Size = DataDirectory[4:8]
+# print("VirtualAddress :", hex(int.from_bytes(VirtualAddress, "little")))
+# print("Size :", hex(int.from_bytes(Size, "little")))
 
 
 def GetCreateTime():
