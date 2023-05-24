@@ -23,7 +23,7 @@ def Operate():
     datawin = DataWin()
     main.actionIMAGE_DOS_HEADER.triggered.connect(doswin.show)
     main.actionIMAGE_FILE_HEADER.triggered.connect(filewin.show)
-    main.actionIMAGE_OPTINAL_HEADER.triggered.connect(optwin.show)
+    main.actionIMAGE_OPTIONAL_HEADER.triggered.connect(optwin.show)
     main.actionIMAGE_DATA_HEADER.triggered.connect(datawin.show)
 
 
@@ -98,13 +98,13 @@ class DosWin(QMainWindow, Ui_DosWindow):
             self.content = self.tableWidget.item(row, col).text()
         except Exception as e:
             traceback.print_exc()
-        self.textBrowser.setText("        *_*      ")
+        self.label.setText("        *_*      ")
 
     def ToldSuccessfully(self):
         if self.content is not None:
-            self.textBrowser.setText("复制成功！")
+            self.label.setText("复制成功！")
         else:
-            self.textBrowser.setText("请选择左边框中要复制的内容！！！")
+            self.label.setText("请选择左边框中要复制的内容！！！")
         self.content = None
 
 
@@ -131,13 +131,13 @@ class FileWin(QMainWindow, Ui_FileWindow):
             self.content = self.tableWidget.item(row, col).text()
         except Exception as e:
             traceback.print_exc()
-        self.textBrowser.setText(" ")
+        self.label.setText(" ")
 
     def ToldSuccessfully(self):
         if self.content is not None:
-            self.textBrowser.setText("复制成功！")
+            self.label.setText("复制成功！")
         else:
-            self.textBrowser.setText("请选择左边框中要复制的内容！！！")
+            self.label.setText("请选择左边框中要复制的内容！！！")
         self.content = None
 
 

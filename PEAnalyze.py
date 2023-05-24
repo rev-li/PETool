@@ -9,7 +9,7 @@ def ByteToHex(bytes):
 def LitToBig(bytes):
     ans = ""
     for i in reversed(bytes):
-        if i < 10:
+        if i < 16:
             ans += '0'
         ans += hex(i)[2:4]
     return ans.upper()
@@ -93,13 +93,13 @@ def IsDos(cont):
         pass
 
 
-# def GetPeFileStart():
-#     e_lfanew = cont[60:64]
-#     if e_lfanew == E_LFANEW:
-#         exit(-1)
-#     else:
-#         print("PE文件开始地址 :", ByteToHex(e_lfanew).upper())
-#         return e_lfanew
+def GetPeFileStart(cont):
+    e_lfanew = cont[60:64]
+    if e_lfanew == E_LFANEW:
+        exit(-1)
+    else:
+        print("PE文件开始地址 :", ByteToHex(e_lfanew).upper())
+        return int.from_bytes(e_lfanew, "little")
 
 
 def Character(character_offset, content):
@@ -155,7 +155,7 @@ def Read_IMAGE_NT_HEADERS(e_lfanew, content):
     # print("---------------------IMAGE_OPTIONAL_HEADER------------------------")
     # IMAGE_OPTIONAL_HEADER_Offset: IOH_offset
     IOH_offset = NT_offset + 24
-    Read_Image_Optional_Header(IOH_offset, content)
+    # Read_Image_Optional_Header(IOH_offset, content)
 
 
 class Image_Dos_Header:
@@ -167,21 +167,19 @@ class Image_Dos_Header:
         self.e_crlc = LitToBig(content[6:8])
         self.e_cparhdr = LitToBig(content[8:10])
         self.e_minalloc = LitToBig(content[10:12])
-        self.e_ss = LitToBig(content[12:14])
-        self.e_sp = LitToBig(content[14:16])
-        self.e_csum = LitToBig(content[16:18])
+        self.e_maxalloc = LitToBig(content[12:14])
+        self.e_ss = LitToBig(content[14:16])
+        self.e_sp = LitToBig(content[16:18])
+        self.e_csum = LitToBig(content[18:20])
         self.e_ip = LitToBig(content[20:22])
         self.e_cs = LitToBig(content[22:24])
         self.e_lfarlc = LitToBig(content[24:26])
-        self.e_res = LitToBig(content[26:34])
-        self.e_oemid = LitToBig(content[34:36])
+        self.e_ovno = LitToBig(content[26:28])
+        self.e_res = LitToBig(content[28:36])
+        self.e_oemid = LitToBig(content[36:38])
         self.e_oeminfo = LitToBig(content[38:40])
         self.e_res2 = LitToBig(content[40:60])
         self.e_lfanew = LitToBig(content[60:64])
-
-    def GetNToffset(self, content):
-        e_lfanew = content[60:64]
-        return int.from_bytes(e_lfanew, "little")
 
 
 class IMAGE_FILE_HEADER:
@@ -198,30 +196,73 @@ class IMAGE_FILE_HEADER:
 
 class Image_Optional_Header:
     def __init__(self, e_lfanew, content):
-        self.magic = LitToBig(content[e_lfanew + 24:e_lfanew + 26])
+        self.Magic = LitToBig(content[e_lfanew + 24:e_lfanew + 26])
         self.MajorLinkerVersion = LitToBig(content[e_lfanew + 26: e_lfanew + 27])
         self.MinorLinkerVersion = LitToBig(content[e_lfanew + 27:e_lfanew + 28])
         self.SizeOfCode = LitToBig(content[e_lfanew + 28:e_lfanew + 32])
         self.SizeOfInitializedData = LitToBig(content[e_lfanew + 32: e_lfanew + 36])
-        self.AddressOfEntryPoint = LitToBig(content[e_lfanew + 36:e_lfanew + 40])
-        self.BaseOfCode = LitToBig(content[e_lfanew + 40: e_lfanew + 44])
-        self.SectionAlignment = LitToBig(content[e_lfanew + 44:e_lfanew + 48])
-        self.FileAlignment = LitToBig(content[e_lfanew + 48:e_lfanew + 52])
-        self.MajorOperatingSystemVersion = LitToBig(content[e_lfanew + 52: e_lfanew + 54])
-        self.MinorOperatingSystemVersion = LitToBig(content[e_lfanew + 54:e_lfanew + 56])
-        self.MajorImageVersion = LitToBig(content[e_lfanew + 56:e_lfanew + 58])
-        self.MinorImageVersion = LitToBig(content[e_lfanew + 58:e_lfanew + 60])
-        self.Win32VersionValue = LitToBig(content[e_lfanew + 60:e_lfanew + 64])
-        self.SizeOfImage = LitToBig(content[e_lfanew + 64:e_lfanew + 68])
-        self.SizeOfHeaders = LitToBig(content[e_lfanew + 68:e_lfanew + 72])
-        self.CheckSum = LitToBig(content[e_lfanew + 72:e_lfanew + 76])
-        self.Subsystem = LitToBig(content[e_lfanew + 76:e_lfanew + 78])
-        self.DllCharacteristics = LitToBig(content[e_lfanew + 78:e_lfanew + 80])
-        self.SizeOfStackReserve = LitToBig(content[e_lfanew + 80:e_lfanew + 84])
-        self.SizeOfHeapReserve = LitToBig(content[e_lfanew + 84:e_lfanew + 88])
-        self.SizeOfHeapCommit = LitToBig(content[e_lfanew + 88:e_lfanew + 92])
-        self.LoaderFlags = LitToBig(content[e_lfanew + 92:e_lfanew + 96])
-        self.NumberOfRvaAndSizes = LitToBig(content[e_lfanew + 96:e_lfanew + 100])
+        self.SizeOfUninitializedData = LitToBig(content[e_lfanew + 36: e_lfanew + 40])
+        self.AddressOfEntryPoint = LitToBig(content[e_lfanew + 40:e_lfanew + 44])
+        self.BaseOfCode = LitToBig(content[e_lfanew + 44: e_lfanew + 48])
+        self.BaseOfData = LitToBig(content[e_lfanew + 48:e_lfanew + 52])
+        self.ImageBase = LitToBig(content[e_lfanew + 52:e_lfanew + 56])
+        self.SectionAlignment = LitToBig(content[e_lfanew + 56:e_lfanew + 60])
+        self.FileAlignment = LitToBig(content[e_lfanew + 60:e_lfanew + 64])
+        self.MajorOperatingSystemVersion = LitToBig(content[e_lfanew + 64: e_lfanew + 66])
+        self.MinorOperatingSystemVersion = LitToBig(content[e_lfanew + 66:e_lfanew + 68])
+        self.MajorImageVersion = LitToBig(content[e_lfanew + 68:e_lfanew + 70])
+        self.MinorImageVersion = LitToBig(content[e_lfanew + 70:e_lfanew + 72])
+        self.MajorSubsystemVersion = LitToBig(content[e_lfanew + 72:e_lfanew + 74])
+        self.MinorSubsystemVersion = LitToBig(content[e_lfanew + 74:e_lfanew + 76])
+        self.Win32VersionValue = LitToBig(content[e_lfanew + 76:e_lfanew + 80])
+        self.SizeOfImage = LitToBig(content[e_lfanew + 80:e_lfanew + 84])
+        self.SizeOfHeaders = LitToBig(content[e_lfanew + 84:e_lfanew + 88])
+        self.CheckSum = LitToBig(content[e_lfanew + 88:e_lfanew + 92])
+        self.Subsystem = LitToBig(content[e_lfanew + 92:e_lfanew + 94])
+        self.DllCharacteristics = LitToBig(content[e_lfanew + 94:e_lfanew + 96])
+        self.SizeOfStackReserve = LitToBig(content[e_lfanew + 96:e_lfanew + 100])
+        self.SizeOfStackCommit = LitToBig(content[e_lfanew + 100:e_lfanew + 104])
+        self.SizeOfHeapReserve = LitToBig(content[e_lfanew + 104:e_lfanew + 108])
+        self.SizeOfHeapCommit = LitToBig(content[e_lfanew + 108:e_lfanew + 112])
+        self.LoaderFlags = LitToBig(content[e_lfanew + 112:e_lfanew + 116])
+        self.NumberOfRvaAndSizes = LitToBig(content[e_lfanew + 116:e_lfanew + 120])
+
+
+class Image_Data_Directory:
+    def __init__(self, e_lfanew, content):
+        baseAddr = e_lfanew + 120
+        self.Export_Dir_VAddr = LitToBig(content[baseAddr:baseAddr + 4])
+        self.Export_Dir_Size = LitToBig(content[baseAddr + 4:baseAddr + 8])
+        self.Import_Dir_VAddr = LitToBig(content[baseAddr + 8:baseAddr + 12])
+        self.Import_Dir_Size = LitToBig(content[baseAddr + 12:baseAddr + 16])
+        self.Resource_Dir_VAddr = LitToBig(content[baseAddr + 16:baseAddr + 20])
+        self.Resource_Dir_Size = LitToBig(content[baseAddr + 20:baseAddr + 24])
+        self.Exeception_Dir_VAddr = LitToBig(content[baseAddr + 24:baseAddr + 28])
+        self.Exeception_Dir_Size = LitToBig(content[baseAddr + 28:baseAddr + 32])
+        self.Security_Dir_VAddr = LitToBig(content[baseAddr + 32:baseAddr + 36])
+        self.Security_Dir_Size = LitToBig(content[baseAddr + 36:baseAddr + 40])
+        self.BaseReloc_Dir_VAddr = LitToBig(content[baseAddr + 40:baseAddr + 44])
+        self.BaseReloc_Dir_Size = LitToBig(content[baseAddr + 44:baseAddr + 48])
+        self.Debug_Dir_VAddr = LitToBig(content[baseAddr + 48:baseAddr + 52])
+        self.Debug_Dir_Size = LitToBig(content[baseAddr + 52:baseAddr + 56])
+        self.CopyRight_Dir_VAddr = LitToBig(content[baseAddr + 56:baseAddr + 60])
+        self.CopyRight_Dir_Size = LitToBig(content[baseAddr + 60:baseAddr + 64])
+        self.GlobalPtr_Dir_VAddr = LitToBig(content[baseAddr + 64:baseAddr + 68])
+        self.GlobalPtr_Dir_Size = LitToBig(content[baseAddr + 68:baseAddr + 72])
+        self.Tls_Dir_VAddr = LitToBig(content[baseAddr + 72:baseAddr + 76])
+        self.Tls_Dir_Size = LitToBig(content[baseAddr + 76:baseAddr + 80])
+        self.LoadConfig_Dir_VAddr = LitToBig(content[baseAddr + 80:baseAddr + 84])
+        self.LoadConfig_Dir_Size = LitToBig(content[baseAddr + 84:baseAddr + 88])
+        self.BoundImport_Dir_VAddr = LitToBig(content[baseAddr + 88:baseAddr + 92])
+        self.BoundImport_Dir_Size = LitToBig(content[baseAddr + 92:baseAddr + 96])
+        self.IAT_Dir_VAddr = LitToBig(content[baseAddr + 96:baseAddr + 100])
+        self.IAT_Dir_Size = LitToBig(content[baseAddr + 100:baseAddr + 104])
+        self.DelayImport_Dir_VAddr = LitToBig(content[baseAddr + 104:baseAddr + 108])
+        self.DelayImport_Dir_Size = LitToBig(content[baseAddr + 108:baseAddr + 112])
+        self.ComDescriptor_Dir_VAddr = LitToBig(content[baseAddr + 112:baseAddr + 116])
+        self.ComDescriptor_Dir_Size = LitToBig(content[baseAddr + 116:baseAddr + 120])
+        self.Reserved_Dir_VAddr = LitToBig(content[baseAddr + 120:baseAddr + 124])
+        self.Reserved_Dir_Size = LitToBig(content[baseAddr + 124:baseAddr + 128])
 
 
 # def Read_Image_Optional_Header(IOHbase, content):

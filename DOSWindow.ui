@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
+    <width>900</width>
     <height>480</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>750</width>
+    <width>900</width>
     <height>480</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>750</width>
+    <width>900</width>
     <height>480</height>
    </size>
   </property>
@@ -32,8 +32,8 @@
    <widget class="QPushButton" name="CopyButton">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>170</y>
+      <x>710</x>
+      <y>100</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -47,19 +47,19 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>750</width>
+      <width>900</width>
       <height>480</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>750</width>
+      <width>900</width>
       <height>480</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>750</width>
+      <width>900</width>
       <height>480</height>
      </size>
     </property>
@@ -72,6 +72,12 @@
     <property name="midLineWidth">
      <number>0</number>
     </property>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>120</number>
+    </attribute>
     <row>
      <property name="text">
       <string>e_image</string>
@@ -200,7 +206,7 @@
     </column>
     <item row="0" column="0">
      <property name="text">
-      <string>IDH.e_magic</string>
+      <string/>
      </property>
      <property name="flags">
       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
@@ -221,7 +227,7 @@
     </item>
     <item row="1" column="0">
      <property name="text">
-      <string>IDH.e_cblp</string>
+      <string/>
      </property>
     </item>
     <item row="1" column="1">
@@ -231,7 +237,7 @@
     </item>
     <item row="2" column="0">
      <property name="text">
-      <string>IDH.e_cp</string>
+      <string/>
      </property>
     </item>
     <item row="2" column="1">
@@ -241,7 +247,7 @@
     </item>
     <item row="3" column="0">
      <property name="text">
-      <string>IDH.e_crlc</string>
+      <string/>
      </property>
     </item>
     <item row="3" column="1">
@@ -251,7 +257,7 @@
     </item>
     <item row="4" column="0">
      <property name="text">
-      <string>IDH.e_cparhdr</string>
+      <string/>
      </property>
     </item>
     <item row="4" column="1">
@@ -261,7 +267,7 @@
     </item>
     <item row="5" column="0">
      <property name="text">
-      <string>IDH.e_minalloc</string>
+      <string/>
      </property>
     </item>
     <item row="5" column="1">
@@ -271,7 +277,7 @@
     </item>
     <item row="6" column="0">
      <property name="text">
-      <string>IDH.e_ss</string>
+      <string/>
      </property>
     </item>
     <item row="6" column="1">
@@ -281,7 +287,7 @@
     </item>
     <item row="7" column="0">
      <property name="text">
-      <string>IDH.e_sp</string>
+      <string/>
      </property>
     </item>
     <item row="7" column="1">
@@ -291,7 +297,7 @@
     </item>
     <item row="8" column="0">
      <property name="text">
-      <string>IDH.e_csum</string>
+      <string/>
      </property>
     </item>
     <item row="8" column="1">
@@ -301,7 +307,7 @@
     </item>
     <item row="9" column="0">
      <property name="text">
-      <string>IDH.e_ip</string>
+      <string/>
      </property>
     </item>
     <item row="9" column="1">
@@ -311,7 +317,7 @@
     </item>
     <item row="10" column="0">
      <property name="text">
-      <string>IDH.e_cs</string>
+      <string/>
      </property>
     </item>
     <item row="10" column="1">
@@ -321,7 +327,7 @@
     </item>
     <item row="11" column="0">
      <property name="text">
-      <string>IDH.e_lfarlc</string>
+      <string/>
      </property>
     </item>
     <item row="11" column="1">
@@ -331,7 +337,7 @@
     </item>
     <item row="12" column="0">
      <property name="text">
-      <string>IDH.e_res</string>
+      <string/>
      </property>
     </item>
     <item row="12" column="1">
@@ -341,7 +347,7 @@
     </item>
     <item row="13" column="0">
      <property name="text">
-      <string>IDH.e_oemid</string>
+      <string/>
      </property>
     </item>
     <item row="13" column="1">
@@ -351,7 +357,7 @@
     </item>
     <item row="14" column="0">
      <property name="text">
-      <string>IDH.e_oeminfo</string>
+      <string/>
      </property>
     </item>
     <item row="14" column="1">
@@ -361,7 +367,7 @@
     </item>
     <item row="15" column="0">
      <property name="text">
-      <string>IDH.e_res2</string>
+      <string/>
      </property>
     </item>
     <item row="15" column="1">
@@ -371,7 +377,7 @@
     </item>
     <item row="16" column="0">
      <property name="text">
-      <string>IDH.e_lfanew</string>
+      <string/>
      </property>
     </item>
     <item row="16" column="1">
@@ -380,19 +386,36 @@
      </property>
     </item>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>230</y>
-      <width>171</width>
-      <height>111</height>
+      <x>710</x>
+      <y>140</y>
+      <width>141</width>
+      <height>101</height>
      </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ExitButton">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>370</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Exit</string>
     </property>
    </widget>
    <zorder>tableWidget</zorder>
    <zorder>CopyButton</zorder>
-   <zorder>textBrowser</zorder>
+   <zorder>label</zorder>
+   <zorder>ExitButton</zorder>
   </widget>
  </widget>
  <resources/>
