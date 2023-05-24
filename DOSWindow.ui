@@ -280,6 +280,11 @@
       <string>2个字节</string>
      </property>
     </item>
+    <item row="6" column="1">
+     <property name="text">
+      <string>2个字节</string>
+     </property>
+    </item>
     <item row="7" column="0">
      <property name="text">
       <string/>

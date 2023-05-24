@@ -1,8 +1,7 @@
 import time
 import traceback
 
-from PyQt5.QtCore import QMimeData, Qt
-from PyQt5.uic.properties import QtCore
+from PyQt5 import QtCore
 
 from DOSWindow import Ui_DosWindow
 from DataWindow import Ui_DataDirectoryWindow
@@ -13,24 +12,29 @@ from PyQt5.QtWidgets import *
 
 from OptionalWindow import Ui_OptionalWindow
 from PEAnalyze import Image_Dos_Header
-from TipWindow import Ui_TipWindow
 
 
 class Main(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(Main, self).__init__()
+        self.optwin = None
+        self.filewin = None
+        self.doswin = None
+        self.datawin = None
         self.content = None
         self.setupUi(self)
         self.EndName = [".exe", ".dll", ".sys", ".ocx", ".com"]
+        self.filePath = None
         # 调用Drops方法
         self.setAcceptDrops(True)
         self.actionOpen.triggered.connect(self.SelDialog)
 
     def SelDialog(self):
         # 设置文件扩展名过滤,注意用双分号间隔
-        filePath, filetype = QFileDialog.getOpenFileName(self, "选取文件", "./", "All Files (*);;Text Files (*.txt)")
-        print(filePath)
-        self.CheckFile(filePath)
+        self.filePath, filetype = QFileDialog.getOpenFileName(self, "选取文件", "./",
+                                                              "All Files (*);;Text Files (*.txt)")
+        print(self.filePath)
+        self.CheckFile(self.filePath)
 
     # 鼠标进入
     def dragEnterEvent(self, evn):
@@ -38,9 +42,9 @@ class Main(QMainWindow, Ui_MainWindow):
 
     # 鼠标放开
     def dropEvent(self, evn):
-        filePath = evn.mimeData().text().split("///")[1]
-        print(filePath)
-        self.CheckFile(filePath)
+        self.filePath = evn.mimeData().text().split("///")[1]
+        print(self.filePath)
+        self.CheckFile(self.filePath)
 
     def CheckFile(self, filePath):
         tmp = None
@@ -48,6 +52,7 @@ class Main(QMainWindow, Ui_MainWindow):
         print(tmp)
 
         if not tmp:
+            # todo
             self.label.setText("这不是一个正确的文件o，请重新打开@_@")
             print("这不是一个正确的文件")
         else:
@@ -64,25 +69,25 @@ class Main(QMainWindow, Ui_MainWindow):
                     self.Operate(self.content)
 
     def Operate(self, content):
-        doswin = DosWin(content)
-        filewin = FileWin()
-        optwin = OptWin()
-        datawin = DataWin()
-        self.actionIMAGE_DOS_HEADER.triggered.connect(doswin.show)
-        self.actionIMAGE_FILE_HEADER.triggered.connect(filewin.show)
-        self.actionIMAGE_OPTIONAL_HEADER.triggered.connect(optwin.show)
-        self.actionIMAGE_DATA_HEADER.triggered.connect(datawin.show)
+        self.doswin = DosWin(content)
+        self.filewin = FileWin()
+        self.optwin = OptWin()
+        self.datawin = DataWin()
+        self.actionIMAGE_DOS_HEADER.triggered.connect(self.doswin.show)
+        self.actionIMAGE_FILE_HEADER.triggered.connect(self.filewin.show)
+        self.actionIMAGE_OPTIONAL_HEADER.triggered.connect(self.optwin.show)
+        self.actionIMAGE_DATA_HEADER.triggered.connect(self.datawin.show)
 
 
 class DosWin(QMainWindow, Ui_DosWindow):
-    def __init__(self, content):
+    def __init__(self, cont):
         super(DosWin, self).__init__()
         self.content = None
         self.setupUi(self)
-        self.Rewrite(content)
-        self.tableWidget.clicked.connect(self.fillUserInfo)
-        self.CopyButton.clicked.connect(self.copyText)
-        self.CopyButton.clicked.connect(self.ToldSuccessfully)
+        self.Rewrite(cont)
+        # self.tableWidget.clicked.connect(self.fillUserInfo)
+        # self.CopyButton.clicked.connect(self.copyText)
+        # self.CopyButton.clicked.connect(self.ToldSuccessfully)
 
     def copyText(self):
         clipboard = QApplication.clipboard()
@@ -111,7 +116,9 @@ class DosWin(QMainWindow, Ui_DosWindow):
         _translate = QtCore.QCoreApplication.translate
         __sortingEnabled = self.tableWidget.isSortingEnabled()
         self.tableWidget.setSortingEnabled(False)
+
         IDH = Image_Dos_Header(content)
+
         item = self.tableWidget.item(0, 0)
         item.setText(_translate("DosWindow", IDH.e_magic))
         item = self.tableWidget.item(1, 0)
@@ -130,7 +137,7 @@ class DosWin(QMainWindow, Ui_DosWindow):
         item.setText(_translate("DosWindow", IDH.e_ss))
         item = self.tableWidget.item(8, 0)
         item.setText(_translate("DosWindow", IDH.e_sp))
-        item = self.tableWidget.item(9, 1)
+        item = self.tableWidget.item(9, 0)
         item.setText(_translate("DosWindow", IDH.e_csum))
         item = self.tableWidget.item(10, 0)
         item.setText(_translate("DosWindow", IDH.e_ip))
@@ -148,7 +155,6 @@ class DosWin(QMainWindow, Ui_DosWindow):
         item.setText(_translate("DosWindow", IDH.e_res2))
         item = self.tableWidget.item(17, 0)
         item.setText(_translate("DosWindow", IDH.e_lfanew))
-
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
 
