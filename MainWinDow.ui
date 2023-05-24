@@ -41,16 +41,16 @@
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>-1</x>
       <y>0</y>
       <width>561</width>
-      <height>601</height>
+      <height>571</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>300</width>
-      <height>590</height>
+      <width>0</width>
+      <height>0</height>
      </size>
     </property>
     <row>
@@ -116,7 +116,7 @@
     </item>
     <item row="0" column="1">
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </item>
     <item row="1" column="0">
@@ -129,7 +129,7 @@
     </item>
     <item row="1" column="1">
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </item>
     <item row="2" column="0">
@@ -142,7 +142,7 @@
     </item>
     <item row="2" column="1">
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </item>
     <item row="3" column="0">
@@ -155,7 +155,7 @@
     </item>
     <item row="3" column="1">
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </item>
     <item row="4" column="0">
@@ -168,7 +168,7 @@
     </item>
     <item row="4" column="1">
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </item>
     <item row="5" column="0">
@@ -181,7 +181,7 @@
     </item>
     <item row="5" column="1">
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </item>
     <item row="6" column="0">
@@ -194,7 +194,7 @@
     </item>
     <item row="6" column="1">
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </item>
     <item row="7" column="0">
@@ -207,7 +207,7 @@
     </item>
     <item row="7" column="1">
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </item>
    </widget>
@@ -224,8 +224,27 @@
      <string>Exit</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>520</y>
+      <width>391</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QToolBar" name="toolBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="font">
     <font>
      <family>Calibri</family>
@@ -238,6 +257,27 @@
    </property>
    <property name="windowTitle">
     <string>toolBar</string>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="movable">
+    <bool>true</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::NoToolBarArea</set>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <property name="floatable">
+    <bool>true</bool>
    </property>
    <attribute name="toolBarArea">
     <enum>LeftToolBarArea</enum>
@@ -253,6 +293,35 @@
    <addaction name="separator"/>
    <addaction name="actionIMAGE_DATA_HEADER"/>
    <addaction name="separator"/>
+   <addaction name="action"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_3">
+   <property name="windowTitle">
+    <string>toolBar_3</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>700</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
   <action name="actionIMAGE_DOS_HEADER">
    <property name="text">
@@ -278,6 +347,16 @@
   <action name="actionIMAGE_DATA_HEADER">
    <property name="text">
     <string>DATA_DIRECTORY</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>其他</string>
    </property>
   </action>
  </widget>
