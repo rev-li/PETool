@@ -122,12 +122,12 @@ def Character(character_offset, content):
             continue
 
 
-def IsPE(Offset, Signature):
+def IsPE(Start, Content):
     print("是否PE文件  : ", end=" ")
-    if Signature == b'PE\x00\x00':
-        print("是")
+    if Content[Start:Start + 4] == b'PE\x00\x00':
+        return True
     else:
-        print("否")
+        return False
 
 
 def Read_IMAGE_NT_HEADERS(e_lfanew, content):
@@ -184,7 +184,6 @@ class Image_Dos_Header:
 
 class IMAGE_FILE_HEADER:
     def __init__(self, e_lfanew, content):
-        # self.Signature = LitToBig(content[e_lfanew: e_lfanew + 4])
         self.Machine = LitToBig(content[e_lfanew + 4: e_lfanew + 6])
         self.NumberOfSections = LitToBig(content[e_lfanew + 6: e_lfanew + 8])
         self.TimeDateStamp = LitToBig(content[e_lfanew + 8: e_lfanew + 12])

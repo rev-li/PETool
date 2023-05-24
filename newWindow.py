@@ -69,6 +69,36 @@ class Main(QMainWindow, Ui_MainWindow):
                     file.close()
                     self.lfanew = GetPeFileStart(self.content)
                     self.Operate()
+                    self.ReWrite()
+
+    def ReWrite(self):
+        _translate = QtCore.QCoreApplication.translate
+        __sortingEnabled = self.tableWidget.isSortingEnabled()
+        self.tableWidget.setSortingEnabled(False)
+
+        if IsPE(self.lfanew, self.content):
+            item = self.tableWidget.item(0, 1)
+            item.setText(_translate("MainWindow", "是"))
+        else:
+            item = self.tableWidget.item(0, 1)
+            item.setText(_translate("MainWindow", "否"))
+
+        item = self.tableWidget.item(1, 1)
+        item.setText(_translate("MainWindow", "2个字节"))
+        item = self.tableWidget.item(2, 1)
+        item.setText(_translate("MainWindow", "2个字节"))
+        item = self.tableWidget.item(3, 1)
+        item.setText(_translate("MainWindow", "2个字节"))
+        item = self.tableWidget.item(4, 1)
+        item.setText(_translate("MainWindow", "2个字节"))
+        item = self.tableWidget.item(5, 1)
+        item.setText(_translate("MainWindow", "2个字节"))
+        item = self.tableWidget.item(6, 1)
+        item.setText(_translate("MainWindow", "2个字节"))
+        item = self.tableWidget.item(7, 1)
+        item.setText(_translate("MainWindow", "2个字节"))
+
+        self.tableWidget.setSortingEnabled(__sortingEnabled)
 
     def Operate(self):
         self.doswin = DosWin(self.content)
