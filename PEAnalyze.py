@@ -122,18 +122,17 @@ def Character(character_offset, content):
             continue
 
 
-def IsPE(Start, Content):
-    print("是否PE文件  : ", end=" ")
-    if Content[Start:Start + 4] == b'PE\x00\x00':
-        return True
-    else:
-        return False
+# def IsPE(Start, Content):
+#     if Content[Start:Start + 4] == b'PE\x00\x00':
+#         return True
+#     else:
+#         return False
 
 
 def Read_IMAGE_NT_HEADERS(e_lfanew, content):
     NT_offset = int.from_bytes(e_lfanew, "little")
     # PE
-    IsPE(NT_offset, content)
+    # IsPE(NT_offset, content)
     # FileHeader NT头：文件头
     print("----------------------- IMAGE_NT_HEADERS -------------------------")
     Machine_offset = NT_offset + 4
