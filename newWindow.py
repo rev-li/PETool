@@ -11,7 +11,7 @@ import sys
 from PyQt5.QtWidgets import *
 
 from OptionalWindow import Ui_OptionalWindow
-from PEAnalyze import Image_Dos_Header
+from PEAnalyze import *
 
 
 class Main(QMainWindow, Ui_MainWindow):
@@ -22,6 +22,7 @@ class Main(QMainWindow, Ui_MainWindow):
         self.doswin = None
         self.datawin = None
         self.content = None
+        self.lfanew = None
         self.setupUi(self)
         self.EndName = [".exe", ".dll", ".sys", ".ocx", ".com"]
         self.filePath = None
@@ -66,13 +67,14 @@ class Main(QMainWindow, Ui_MainWindow):
                     self.content = file.read()
                     # print(self.content)
                     file.close()
-                    self.Operate(self.content)
+                    self.lfanew = GetPeFileStart(self.content)
+                    self.Operate()
 
-    def Operate(self, content):
-        self.doswin = DosWin(content)
-        self.filewin = FileWin()
-        self.optwin = OptWin()
-        self.datawin = DataWin()
+    def Operate(self):
+        self.doswin = DosWin(self.content)
+        self.filewin = FileWin(self.lfanew, self.content)
+        self.optwin = OptWin(self.lfanew, self.content)
+        self.datawin = DataWin(self.lfanew, self.content)
         self.actionIMAGE_DOS_HEADER.triggered.connect(self.doswin.show)
         self.actionIMAGE_FILE_HEADER.triggered.connect(self.filewin.show)
         self.actionIMAGE_OPTIONAL_HEADER.triggered.connect(self.optwin.show)
@@ -159,10 +161,11 @@ class DosWin(QMainWindow, Ui_DosWindow):
 
 
 class FileWin(QMainWindow, Ui_FileWindow):
-    def __init__(self):
+    def __init__(self, lfanew, cont):
         super(FileWin, self).__init__()
         self.content = None
         self.setupUi(self)
+        self.ReWrite(lfanew, cont)
         self.tableWidget.clicked.connect(self.fillUserInfo)
         self.CopyButton.clicked.connect(self.copyText)
         self.CopyButton.clicked.connect(self.ToldSuccessfully)
@@ -190,12 +193,36 @@ class FileWin(QMainWindow, Ui_FileWindow):
             self.label.setText("请选择左边框中要复制的内容！！！")
         self.content = None
 
+    def ReWrite(self, lfanew, cont):
+        _translate = QtCore.QCoreApplication.translate
+        __sortingEnabled = self.tableWidget.isSortingEnabled()
+        self.tableWidget.setSortingEnabled(False)
+
+        IFH = IMAGE_FILE_HEADER(lfanew, cont)
+
+        item = self.tableWidget.item(0, 0)
+        item.setText(_translate("FileWindow", IFH.Machine))
+        item = self.tableWidget.item(1, 0)
+        item.setText(_translate("FileWindow", IFH.NumberOfSections))
+        item = self.tableWidget.item(2, 0)
+        item.setText(_translate("FileWindow", IFH.TimeDateStamp))
+        item = self.tableWidget.item(3, 0)
+        item.setText(_translate("FileWindow", IFH.PointerToSymbolTable))
+        item = self.tableWidget.item(4, 0)
+        item.setText(_translate("FileWindow", IFH.NumberOfSymbols))
+        item = self.tableWidget.item(5, 0)
+        item.setText(_translate("FileWindow", IFH.SizeOfOptionalHeader))
+        item = self.tableWidget.item(6, 0)
+        item.setText(_translate("FileWindow", IFH.Characteristics))
+        self.tableWidget.setSortingEnabled(__sortingEnabled)
+
 
 class OptWin(QMainWindow, Ui_OptionalWindow):
-    def __init__(self):
+    def __init__(self, lfanew, cont):
         super(OptWin, self).__init__()
         self.content = None
         self.setupUi(self)
+        self.ReWrite(lfanew, cont)
         self.tableWidget.clicked.connect(self.fillUserInfo)
         self.CopyButton.clicked.connect(self.copyText)
         self.CopyButton.clicked.connect(self.ToldSuccessfully)
@@ -223,12 +250,16 @@ class OptWin(QMainWindow, Ui_OptionalWindow):
             self.label.setText("请选择左边框中要复制的内容！！！")
         self.content = None
 
+    def ReWrite(self, lfanew, cont):
+        pass
+
 
 class DataWin(QMainWindow, Ui_DataDirectoryWindow):
-    def __init__(self):
+    def __init__(self, lfanew, cont):
         super(DataWin, self).__init__()
         self.content = None
         self.setupUi(self)
+        self.ReWrite(lfanew, cont)
         self.tableWidget.clicked.connect(self.fillUserInfo)
         self.CopyButton.clicked.connect(self.copyText)
         self.CopyButton.clicked.connect(self.ToldSuccessfully)
@@ -255,6 +286,9 @@ class DataWin(QMainWindow, Ui_DataDirectoryWindow):
         else:
             self.label.setText("请选择左边框中要复制的内容！！！")
         self.content = None
+
+    def ReWrite(self, lfanew, cont):
+        pass
 
 
 if __name__ == "__main__":
