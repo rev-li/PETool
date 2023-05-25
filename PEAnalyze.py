@@ -41,7 +41,7 @@ dict_Characteristics = [b"\x01\x00", b"\x02\x00", b"\x04\x00", b"\x08\x00", b"\x
                         b"\x00\x02", b"\x00\x04", b"\x00\x08", b"\x00\x10", b"\x00\x20", b"\x00\x40", b"\x00\x80"]
 
 
-def Characteristics(Character):
+def Characteristics1(Character):
     switcher = {
         b"\x01\x00": "重定位信息被移除",
         b"\x02\x00": "是可执行文件",  # .exe
@@ -116,7 +116,39 @@ def Character(character_offset, content):
         # print("c :", c.to_bytes(2,"little"))
         if tmp == c:
             # 在这里传入时转为临时的bytes类型
-            print("           ", Characteristics(tmp.to_bytes(2, "little")))
+            print("           ", Characteristics1(tmp.to_bytes(2, "little")))
+            character = character ^ c
+        else:
+            continue
+
+
+dict_Characteristics2 = [b"\x20\x00\x00\x00", b"\x40\x00\x00\x00", b"\x80\x00\x00\x00", b"\x00\x00\x00\x20",
+                         b"\x00\x00\x00\x40", b"\x00\x00\x00\x80"]
+
+
+def Characteristics2(char):
+    switcher = {
+        b"\x20\x00\x00\x00": "Section contains code",
+        b"\x40\x00\x00\x00": "Section contains initialized data",
+        b"\x80\x00\x00\x00": "Section contains uninitialized data",
+        b"\x00\x00\x00\x20": "Section is executable",
+        b"\x00\x00\x00\x40": "Section is readable",
+        b"\x00\x00\x00\x80": "Section is writable",
+    }
+    return switcher.get(char, "")
+
+
+def Character2(character_offset, content):
+    character = content[character_offset:character_offset + 2]
+    # character先变为int数值
+    character = int.from_bytes(character, "little")
+    for c in dict_Characteristics:
+        # c先变为int数值
+        c = int.from_bytes(c, "little")
+        tmp = character & c
+        if tmp == c:
+            # 在这里传入时转为临时的bytes类型
+            print("           ", Characteristics2(tmp.to_bytes(2, "little")))
             character = character ^ c
         else:
             continue
@@ -265,7 +297,20 @@ class Image_Data_Directory:
 
 class Image_Section_Header:
     def __init__(self, e_lfanew, content):
-        self.Name = LitToBig(content[e_lfanew + 128:e_lfanew + 136])
+        baseAddr = e_lfanew + 248
+        tmp = content[baseAddr:baseAddr + 8]
+        self.Name = LitToBig(tmp)
+        self.Name_str = str(tmp, 'UTF-8').strip('\x00')
+        self.PhysicalAddress = LitToBig(content[baseAddr + 8:baseAddr + 12])
+        self.VirtualSize = LitToBig(content[baseAddr + 12:baseAddr + 16])
+        self.VirtualAddress = LitToBig(content[baseAddr + 16:baseAddr + 20])
+        self.SizeOfRawData = LitToBig(content[baseAddr + 20:baseAddr + 24])
+        self.PointerToRawData = LitToBig(content[baseAddr + 24:baseAddr + 28])
+        self.PointerToReLocations = LitToBig(content[baseAddr + 28:baseAddr + 32])
+        self.PointerToLineNumbers = LitToBig(content[baseAddr + 32:baseAddr + 36])
+        self.NumberOfRelocations = LitToBig(content[baseAddr + 36:baseAddr + 40])
+        self.NumberOfLinenumbers = LitToBig(content[baseAddr + 40:baseAddr + 44])
+        self.Characteristic = LitToBig(content[baseAddr + 44:baseAddr + 48])
 
 
 # def Read_Image_Optional_Header(IOHbase, content):

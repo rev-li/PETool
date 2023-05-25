@@ -123,9 +123,24 @@ class Main(QMainWindow, Ui_MainWindow):
         self.datawin = DataWin(self.lfanew, self.content)
 
         self.doswin.ExitButton.clicked.connect(self.close)
+        self.doswin.ExitButton.clicked.connect(self.filewin.close)
+        self.doswin.ExitButton.clicked.connect(self.optwin.close)
+        self.doswin.ExitButton.clicked.connect(self.datawin.close)
+
         self.filewin.ExitButton.clicked.connect(self.close)
+        self.filewin.ExitButton.clicked.connect(self.doswin.close)
+        self.filewin.ExitButton.clicked.connect(self.datawin.close)
+        self.filewin.ExitButton.clicked.connect(self.optwin.close)
+
         self.datawin.ExitButton.clicked.connect(self.close)
+        self.datawin.ExitButton.clicked.connect(self.doswin.close)
+        self.datawin.ExitButton.clicked.connect(self.filewin.close)
+        self.datawin.ExitButton.clicked.connect(self.optwin.close)
+
         self.optwin.ExitButton.clicked.connect(self.close)
+        self.optwin.ExitButton.clicked.connect(self.doswin.close)
+        self.optwin.ExitButton.clicked.connect(self.filewin.close)
+        self.optwin.ExitButton.clicked.connect(self.datawin.close)
 
         self.actionIMAGE_DOS_HEADER.triggered.connect(self.doswin.show)
         self.actionIMAGE_FILE_HEADER.triggered.connect(self.filewin.show)
