@@ -30,6 +30,9 @@ class Main(QMainWindow, Ui_MainWindow):
         self.setAcceptDrops(True)
         self.actionOpen.triggered.connect(self.SelDialog)
 
+        # Exit
+        self.ExitButton.clicked.connect(self.close)
+
     def SelDialog(self):
         # 设置文件扩展名过滤,注意用双分号间隔
         self.filePath, filetype = QFileDialog.getOpenFileName(self, "选取文件", "./",
@@ -118,6 +121,12 @@ class Main(QMainWindow, Ui_MainWindow):
         self.filewin = FileWin(self.lfanew, self.content)
         self.optwin = OptWin(self.lfanew, self.content)
         self.datawin = DataWin(self.lfanew, self.content)
+
+        self.doswin.ExitButton.clicked.connect(self.close)
+        self.filewin.ExitButton.clicked.connect(self.close)
+        self.datawin.ExitButton.clicked.connect(self.close)
+        self.optwin.ExitButton.clicked.connect(self.close)
+
         self.actionIMAGE_DOS_HEADER.triggered.connect(self.doswin.show)
         self.actionIMAGE_FILE_HEADER.triggered.connect(self.filewin.show)
         self.actionIMAGE_OPTIONAL_HEADER.triggered.connect(self.optwin.show)
@@ -133,6 +142,7 @@ class DosWin(QMainWindow, Ui_DosWindow):
         self.tableWidget.clicked.connect(self.fillUserInfo)
         self.CopyButton.clicked.connect(self.copyText)
         self.CopyButton.clicked.connect(self.ToldSuccessfully)
+        self.ExitButton.clicked.connect(self.close)
 
     def copyText(self):
         clipboard = QApplication.clipboard()
@@ -212,6 +222,7 @@ class FileWin(QMainWindow, Ui_FileWindow):
         self.tableWidget.clicked.connect(self.fillUserInfo)
         self.CopyButton.clicked.connect(self.copyText)
         self.CopyButton.clicked.connect(self.ToldSuccessfully)
+        self.ExitButton.clicked.connect(self.close)
 
     def copyText(self):
         clipboard = QApplication.clipboard()
@@ -269,6 +280,7 @@ class OptWin(QMainWindow, Ui_OptionalWindow):
         self.tableWidget.clicked.connect(self.fillUserInfo)
         self.CopyButton.clicked.connect(self.copyText)
         self.CopyButton.clicked.connect(self.ToldSuccessfully)
+        self.ExitButton.clicked.connect(self.close)
 
     def copyText(self):
         clipboard = QApplication.clipboard()
@@ -372,6 +384,7 @@ class DataWin(QMainWindow, Ui_DataDirectoryWindow):
         self.tableWidget.clicked.connect(self.fillUserInfo)
         self.CopyButton.clicked.connect(self.copyText)
         self.CopyButton.clicked.connect(self.ToldSuccessfully)
+        self.ExitButton.clicked.connect(self.close)
 
     def copyText(self):
         clipboard = QApplication.clipboard()
