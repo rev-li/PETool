@@ -425,7 +425,7 @@ class DataWin(QMainWindow, Ui_DataDirectoryWindow):
         item = self.tableWidget.item(1, 1)
         item.setText(_translate("DataDirectoryWindow", IDH.Import_Dir_Size))
         item = self.tableWidget.item(2, 0)
-        item.setText(_translate("DataDirectoryWindow", IDH.Reserved_Dir_VAddr))
+        item.setText(_translate("DataDirectoryWindow", IDH.Resource_Dir_VAddr))
         item = self.tableWidget.item(2, 1)
         item.setText(_translate("DataDirectoryWindow", IDH.Resource_Dir_Size))
         item = self.tableWidget.item(3, 0)

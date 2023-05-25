@@ -2,10 +2,6 @@ MZ = b'MZ'
 E_LFANEW = b'\x00\x00\x00\x00'
 
 
-def ByteToHex(bytes):
-    return hex(int.from_bytes(bytes, "little"))[2:]
-
-
 def LitToBig(bytes):
     ans = ""
     for i in reversed(bytes):
@@ -91,6 +87,10 @@ def IsDos(cont):
     else:
         # print("是")
         pass
+
+
+def ByteToHex(bytes):
+    return hex(int.from_bytes(bytes, "little"))[2:]
 
 
 def GetPeFileStart(cont):
@@ -261,6 +261,11 @@ class Image_Data_Directory:
         self.ComDescriptor_Dir_Size = LitToBig(content[baseAddr + 116:baseAddr + 120])
         self.Reserved_Dir_VAddr = LitToBig(content[baseAddr + 120:baseAddr + 124])
         self.Reserved_Dir_Size = LitToBig(content[baseAddr + 124:baseAddr + 128])
+
+
+class Image_Section_Header:
+    def __init__(self, e_lfanew, content):
+        self.Name = LitToBig(content[e_lfanew + 128:e_lfanew + 136])
 
 
 # def Read_Image_Optional_Header(IOHbase, content):
