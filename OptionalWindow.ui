@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OptionalWindow</class>
+ <widget class="QMainWindow" name="OptionalWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>750</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>750</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>750</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>IMAGE_OPTIONAL_HEADER</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>750</width>
+      <height>480</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>750</width>
+      <height>480</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>750</width>
+      <height>480</height>
+     </size>
+    </property>
+    <row>
+     <property name="text">
+      <string>Magic</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MajorLinkerVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MinorLinkerVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfCode</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfInitializeData</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfUninitializeData</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>AddressOfEntryPoint（RVA）</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>BaseOfCode</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>BaseOfData</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>ImageBase</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SectionAlignment</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>FileAlignment</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MajorOperatingSystemVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MinorOperatingSystemVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MajorImageVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MinorImageVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MajorSubsystemVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>MinorSubsystemVersion</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>Win32VersionValue</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfImage</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfHeaders</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>CheckSum</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>Subsystem</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>DllCharacteristics</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfStackReserve</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfStackCommit</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfHeapReserve</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>SizeOfHeapCommit</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>LoaderFlags</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>NumberOfRvaAndSizes</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Content</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Size</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>2个字节</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>1个字节</string>
+     </property>
+    </item>
+    <item row="2" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="2" column="1">
+     <property name="text">
+      <string>1个字节</string>
+     </property>
+    </item>
+    <item row="3" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="3" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="4" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="4" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="5" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="5" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="6" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="6" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="7" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="7" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="8" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="8" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="9" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="9" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="10" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="10" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="11" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="11" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="12" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="12" column="1">
+     <property name="text">
+      <string>2个字节</string>
+     </property>
+    </item>
+    <item row="13" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="13" column="1">
+     <property name="text">
+      <string>2个字节</string>
+     </property>
+    </item>
+    <item row="14" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="14" column="1">
+     <property name="text">
+      <string>2个字节</string>
+     </property>
+    </item>
+    <item row="15" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="15" column="1">
+     <property name="text">
+      <string>2个字节</string>
+     </property>
+    </item>
+    <item row="16" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="16" column="1">
+     <property name="text">
+      <string>2个字节</string>
+     </property>
+    </item>
+    <item row="17" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="17" column="1">
+     <property name="text">
+      <string>2个字节</string>
+     </property>
+    </item>
+    <item row="18" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="18" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="19" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="19" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="20" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="20" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="21" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="21" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="22" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="22" column="1">
+     <property name="text">
+      <string>2个字节</string>
+     </property>
+    </item>
+    <item row="23" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="23" column="1">
+     <property name="text">
+      <string>2个字节</string>
+     </property>
+    </item>
+    <item row="24" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="24" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="25" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="25" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="26" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="26" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="27" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="27" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="28" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="28" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+    <item row="29" column="0">
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item row="29" column="1">
+     <property name="text">
+      <string>4个字节</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="CopyButton">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>130</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Copy</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ExitButton">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>360</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Exit</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>180</y>
+      <width>141</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
