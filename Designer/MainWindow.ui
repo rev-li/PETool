@@ -98,6 +98,21 @@
      </property>
     </widget>
    </widget>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>501</width>
+      <height>481</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+   </widget>
+   <zorder>textBrowser</zorder>
+   <zorder>widgetOpenFile</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
