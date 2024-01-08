@@ -44,19 +44,6 @@
    <property name="enabled">
     <bool>true</bool>
    </property>
-   <widget class="QLabel" name="labelBackground">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>110</y>
-      <width>511</width>
-      <height>491</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QWidget" name="widgetOpenFile" native="true">
     <property name="enabled">
      <bool>true</bool>
@@ -85,7 +72,7 @@
       </font>
      </property>
      <property name="text">
-      <string>或者将文件拖拽到窗口打开</string>
+      <string>或者将文件拖拽至窗口打开</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -141,7 +128,7 @@
      <bool>false</bool>
     </property>
     <property name="title">
-     <string>文件(F)</string>
+     <string>文件(&amp;F)</string>
     </property>
     <property name="separatorsCollapsible">
      <bool>true</bool>
@@ -155,13 +142,13 @@
      <bool>true</bool>
     </property>
     <property name="title">
-     <string>帮助(H)</string>
+     <string>帮助(&amp;H)</string>
     </property>
     <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
-     <string>编辑(E)</string>
+     <string>编辑(&amp;E)</string>
     </property>
     <addaction name="actionDosHeader"/>
     <addaction name="actionFileHeader"/>
